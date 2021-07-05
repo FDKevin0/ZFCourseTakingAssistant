@@ -79,6 +79,7 @@ window.onload = function() {
         "    </style>\n" +
         "    <h1>void-lee抢课器</h1>\n" +
         "    <p style=\"color:#fff;\" id=\"load\">正在加载中。。。按f12查看详细情况。</p>\n" +
+        "    <button id=\"refresh\">刷新课程</button>" +
         "    <div id=\"ok\" style=\"display: none;\">\n" +
         "        <select id=\"cid\" multiple=\"multiple\" style=\"flex: 1;\"></select>\n" +
         "        <div id=\"inf\" class=\"button_domain\">\n" +
@@ -98,21 +99,10 @@ window.onload = function() {
 
     $('body').prepend(html)
 
-    // TODO: 检查更新
-    $.ajax({
-        url: 'https://raw.githubusercontent.com/Void-JackLee/ZFCourseTakingAssistant/main/package.json?ver=' + new Date().getTime(),
-        dataType: 'json',
-        async: true,
-        method: 'get',
-        success: (data) => {
-            if (data.version !== pro_info.version) {
-                const h1 = $('h1');
-                h1.html(h1.html() + `<h5 style="font-size: 16px;display: inline;margin: 0">(检查到新版本v${data.version}：${data.newVersionDescription}[<a href='https://raw.githubusercontent.com/Void-JackLee/ZFCourseTakingAssistant/main/%E6%8A%A2%E8%AF%BE%E5%8A%A9%E6%89%8B.user.js'>点此更新</a>])</h5>`);
-            }
-        }
-    })
-
-    setTimeout(run,100);
+    // setTimeout(run,100)
+    $('#refresh').click(function () {
+        run();
+    });
 }
 
 function run() {

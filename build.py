@@ -36,7 +36,7 @@ f.close()
 
 header = """// ==UserScript==
 // @name         抢课助手
-// @namespace    https://void-lee.cn
+// @namespace    https://fdke.vin
 // @version      """ + info["version"] + """
 // @description  """ + info["description"] + """
 // @author       VoidJackLee
